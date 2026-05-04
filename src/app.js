@@ -83,7 +83,22 @@ class TitanBot extends Client {
       } else {
         startupLog(`✅ Database Status: ${dbStatus.connectionType} (fully operational)`);
       }
-      
+      // ===== MEMBER COUNT STATUS =====
+setInterval(() => {
+  try {
+    const guild = this.guilds.cache.first();
+    if (!guild) return;
+
+    const memberCount = guild.memberCount;
+
+    this.user.setActivity(`${memberCount} Total Members`, {
+      type: 3, // Watching
+    });
+
+  } catch (err) {
+    console.log("Status error:", err);
+  }
+}, 15000);
       startupLog('Starting web server...');
       this.startWebServer();
       
