@@ -44,7 +44,22 @@ class TitanBot extends Client {
     this.rest = new REST({ version: '10' }).setToken(config.bot.token);
   }
 
-  async start() {
+  async start() {setInterval(() => {
+  const guild = client.guilds.cache.first();
+
+  if (!guild) return;
+
+  const memberCount = guild.memberCount;
+
+  client.user.setPresence({
+    activities: [{
+      name: `${memberCount} Total Members`,
+      type: 3,
+    }],
+    status: "online",
+  });
+
+}, 15000);
     try {
       startupLog('Starting TitanBot...');
       await new Promise(resolve => setTimeout(resolve, 1000));
