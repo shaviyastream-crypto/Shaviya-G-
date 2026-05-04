@@ -26,9 +26,10 @@ export const botConfig = {
   {
     name: "Loading...",
     type: 3, // Watching
-  },
-],
-
+   },
+ ],
+},
+    
   // =========================
   // COMMAND BEHAVIOR
   // =========================
